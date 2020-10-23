@@ -1,10 +1,15 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-// Step 1: Where is the HR Portal?
+// Development Tasks (Since this is a demo all functionality can be here)
 
-// Step 2: Ask another question that luis will respond with an intent
-    // use the intent to pull Data from Table Storage
+// Step 1: Add QnA maker support to answer the following Question:
+//              "What is the link for the HR Portal?"
+
+// Step 2: Add Luis support to intent and entity extraction:
+//              "Who is the representative for Microsoft?" entities: "representative", "Microsoft"
+
+// Step 3: Pull the Representative from Microsoft from Table Storage and send activity back
 
 const { ActivityHandler, MessageFactory } = require('botbuilder');
 const { LuisRecognizer, QnAMaker } = require('botbuilder-ai');
@@ -17,7 +22,7 @@ class EchoBot extends ActivityHandler {
 
             await context.sendActivity(`ECHO: ${context.activity.text}`);
             await next();
-            
+
         });
 
         this.onMembersAdded(async (context, next) => {
