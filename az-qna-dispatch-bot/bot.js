@@ -20,7 +20,8 @@ class EchoBot extends ActivityHandler {
 
         this.onMessage(async (context, next) => {
 
-            await context.sendActivity(`ECHO: ${context.activity.text}`);
+
+            await context.sendActivity(`${process.env.BOT_ENV_TEST}: ${context.activity.text}`);
             await next();
 
         });
