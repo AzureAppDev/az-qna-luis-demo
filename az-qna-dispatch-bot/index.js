@@ -8,6 +8,8 @@ const dotenv = require('dotenv');
 const ENV_FILE = path.join(__dirname, '.env');
 dotenv.config({ path: ENV_FILE });
 
+console.log("ENV: " + ENV_FILE)
+
 const restify = require('restify');
 
 // Import required bot services.

@@ -76,7 +76,11 @@ class EchoBot extends ActivityHandler {
             await context.sendActivity(`Retrieving document ${recognizerResult.entities.id[0]}`)
             await this.cosmosRepo.ConnectToCollection();
             const result = await this.cosmosRepo.GetItem(recognizerResult.entities.id[0]);
-            await context.sendActivity(JSON.stringify(result.resources[0]))
+            if (result.resources.length > 0) {
+                await context.sendActivity(`Name: ${result.resources[0].name} | Path: ${result.resources[0].path}`)
+            } else {
+                await context.sendActivity(`No documents with id: ${recognizerResult.entities.id[0]}`)
+            }
             break;
         default:
             console.log(`Dispatch unrecognized intent: ${ intent }.`);
